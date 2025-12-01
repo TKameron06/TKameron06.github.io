@@ -6,68 +6,102 @@
   <title>Kameron Timmons — Resume</title>
   <meta name="author" content="Kameron Timmons" />
   <style>
-    :root{
+    /* Layout and typography to match the attached document as closely as possible */
+    :root {
+      --text:#111;
+      --muted:#6b6b6b;
       --accent:#0b63a8;
-      --muted:#6b7280;
-      --bg:#f7f9fb;
-      --card:#ffffff;
-      --radius:10px;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --page-bg:#ffffff;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    html,body{height:100%;margin:0;background:var(--bg);color:#111}
-    .container{max-width:900px;margin:32px auto;padding:28px;background:var(--card);border-radius:var(--radius);box-shadow:0 6px 20px rgba(16,24,40,0.08)}
-    header{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-    .name{font-size:1.6rem;font-weight:700;color:var(--accent)}
-    .contact{margin-left:auto;text-align:right;font-size:0.95rem;color:var(--muted)}
-    .contact a{color:inherit;text-decoration:none}
-    .section{margin-top:20px}
-    h2{font-size:1.05rem;margin:0 0 8px 0;color:#0f1724;letter-spacing:0.2px}
-    .grid{display:grid;grid-template-columns:1fr 230px;gap:20px}
-    @media (max-width:780px){.grid{grid-template-columns:1fr} .contact{text-align:left;margin-left:0}}
-    .card{background:transparent;padding:0}
-    .list{margin:8px 0 0 0;padding:0;list-style:none}
-    .list li{margin:6px 0;color:#111}
-    .muted{color:var(--muted);font-size:0.95rem}
-    .skills {display:flex;flex-wrap:wrap;gap:8px}
-    .pill{background:#eef6ff;padding:6px 10px;border-radius:999px;font-size:0.9rem;color:var(--accent)}
-    .subtle{font-size:0.95rem;color:var(--muted)}
-    .project{margin-bottom:10px}
-    .meta{font-size:0.92rem;color:var(--muted)}
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:0.9rem}
-    /* print friendly */
-    @media print{
-      body{background:white}
-      .container{box-shadow:none;border-radius:0}
+
+    html,body{height:100%;margin:0;background:#f3f4f6;color:var(--text)}
+    .paper {
+      max-width:820px;
+      margin:28px auto;
+      background:var(--page-bg);
+      padding:36px 48px;
+      box-shadow:0 6px 22px rgba(16,24,40,0.06);
     }
+
+    header {text-align:left; margin-bottom:18px;}
+    .name {
+      font-size:28px;
+      font-weight:700;
+      color:var(--text);
+      margin-bottom:6px;
+    }
+    .contact-line {
+      font-size:13px;
+      color:var(--muted);
+      letter-spacing:0.2px;
+    }
+    hr.sep {border:0;border-top:1px solid #e6e6e6;margin:16px 0 20px 0}
+
+    /* Section headings styled like original */
+    .section {margin-bottom:14px;}
+    .section h2 {
+      font-size:14px;
+      margin:0 0 8px 0;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .entry {margin:6px 0;padding-left:0}
+    .entry .title {font-weight:600;color:var(--text)}
+    .entry .meta {color:var(--muted);font-size:13px;margin-top:2px;line-height:1.35}
+    .bulleted {margin:6px 0 0 0;padding-left:0;list-style:none}
+
+    /* Two-column layout for some sections at wider widths */
+    .two-col {
+      display:grid;
+      grid-template-columns: 1fr 300px;
+      gap:28px;
+      align-items:start;
+    }
+    @media (max-width:820px){
+      .two-col {grid-template-columns:1fr}
+      .paper {padding:22px}
+    }
+
+    /* compact pills for skills */
+    .skills {display:flex;flex-wrap:wrap;gap:6px}
+    .pill {
+      font-size:12px;padding:6px 10px;border-radius:16px;
+      background:#f2f8ff;color:var(--accent);font-weight:600;
+    }
+
+    footer {margin-top:22px;font-size:12px;color:var(--muted);text-align:right}
   </style>
 </head>
 <body>
-  <main class="container" role="main" aria-labelledby="resume-title">
+  <main class="paper" role="main" aria-labelledby="name-heading">
     <header>
-      <div>
-        <div id="resume-title" class="name">Kameron Timmons</div>
-        <div class="subtle">Pineville, SC</div>
-      </div>
-      <div class="contact" aria-label="Contact information">
-        <div><strong>Phone:</strong> +1 (843) 749-3496</div>
-        <div><strong>Email:</strong> <a href="mailto:KXT@email.sc.edu">KXT@email.sc.edu</a></div>
-        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/kamerontimmons" target="_blank" rel="noopener">linkedin.com/kamerontimmons</a></div>
+      <div id="name-heading" class="name">Kameron Timmons</div>
+      <div class="contact-line">
+        +1 (843) 749-3496 | KXT@email.sc.edu | https://www.linkedin.com/kamerontimmons | Pineville, SC
       </div>
     </header>
 
-    <div class="section grid" role="region" aria-label="Main resume content">
-      <!-- Left column -->
-      <section class="card" aria-labelledby="education-heading">
-        <h2 id="education-heading">Education</h2>
-        <p class="muted"><strong>University of South Carolina, Columbia</strong> — Bachelor of Science in Computer Science (May 2029)</p>
-        <ul class="list">
-          <li class="subtle"><strong>Pre-Collegiate honors:</strong> Dean's List; President's List; National African American Recognition Award; CTE Completer (Computer Science).</li>
-          <li class="subtle"><strong>Collegiate scholarships:</strong> SC Life Scholarship; Eric Reid Athletic Scholarship; Engineering Scholarship; Merit Scholarships.</li>
-          <li class="subtle"><strong>Relevant coursework:</strong> Algorithmic Design I; Computing in the Modern World; Elementary Statistics; Basic College Mathematics; Pre-Calculus.</li>
-        </ul>
+    <hr class="sep" />
 
-        <div class="section" aria-labelledby="skills-heading">
-          <h2 id="skills-heading">Skills</h2>
+    <div class="two-col">
+      <!-- main column -->
+      <section>
+        <div class="section" id="education">
+          <h2>Education</h2>
+          <div class="entry">
+            <div class="title">(May 2029) - University of South Carolina, Columbia: Bachelor of Science in Computer Science</div>
+            <div class="meta">
+              Pre-Collegiate: Dean’s List, President’s List, National African American Recognition Award, CTE Completer in CS<br>
+              Collegiate: SC Life Scholarship, Eric Reid Athletic Scholarship, Engineering Scholarship, Merit Scholarships<br>
+              Relevant Coursework: Algorithmic Design 1, Computing in the Modern World, Elementary Statistics, Basic College Mathematics, Pre-Calculus
+            </div>
+          </div>
+        </div>
+
+        <div class="section" id="skills">
+          <h2>Skills</h2>
           <div class="skills" role="list">
             <span class="pill" role="listitem">Python</span>
             <span class="pill" role="listitem">C / C++</span>
@@ -75,83 +109,99 @@
             <span class="pill" role="listitem">HTML</span>
             <span class="pill" role="listitem">CSS</span>
             <span class="pill" role="listitem">Tinkercad</span>
+            <span class="pill" role="listitem">Notepad++</span>
+            <span class="pill" role="listitem">Eclipse</span>
             <span class="pill" role="listitem">Visual Studio</span>
             <span class="pill" role="listitem">Adobe Creative Cloud</span>
             <span class="pill" role="listitem">Twine</span>
           </div>
         </div>
 
-        <div class="section" aria-labelledby="projects-heading">
-          <h2 id="projects-heading">Selected Projects</h2>
+        <div class="section" id="projects">
+          <h2>Projects</h2>
 
-          <article class="project" aria-labelledby="pyr-heading">
-            <h3 id="pyr-heading" class="muted" style="margin:0 0 4px 0"><strong>3D Printed Pyramid Project</strong> — July 2024</h3>
-            <div class="meta">Collaborated with two team members; designed triangular top for a Pyramid of Giza model; calculated dimensions; used design software and resin 3D printing for top piece and corner covers.</div>
-          </article>
+          <div class="entry">
+            <div class="title">(July 2024) - 3D Printed Pyramid Project</div>
+            <div class="meta">
+              Collaborated with two team members to design a triangular top for a custom Pyramid of Giza model. Constructed a scaled version using pipes, connectors, and other resources, after researching and calculating dimensions. Utilized design software and a resin 3D printer to create top piece and corner covers for the pyramid.
+            </div>
+          </div>
 
-          <article class="project" aria-labelledby="bestb-heading">
-            <h3 id="bestb-heading" class="muted" style="margin:0 0 4px 0"><strong>Best Bites Daily Website</strong> — April 2023</h3>
-            <div class="meta">Built with HTML, CSS and C++; integrated image maps, multi-page links, email links, images, and formatted text to display food locations.</div>
-          </article>
+          <div class="entry">
+            <div class="title">(April 2023) - Best Bites Daily Website</div>
+            <div class="meta">
+              Developed a website using HTML, CSS, and C++ showcasing various food locations from breakfast to dinner. Integrated image maps, multiple page links, email links, images, and formatted text.
+            </div>
+          </div>
 
-          <article class="project" aria-labelledby="hyper-heading">
-            <h3 id="hyper-heading" class="muted" style="margin:0 0 4px 0"><strong>Hyper Cars Website</strong> — March 2023</h3>
-            <div class="meta">Website using HTML/CSS/C++; featured embedded audio, video, and interactive elements.</div>
-          </article>
+          <div class="entry">
+            <div class="title">(March 2023) - Hyper Cars Website</div>
+            <div class="meta">
+              Built a website using HTML, CSS, and C++; highlighted some of the world's fastest sports cars and featured embedded audio clips, videos, and other interactive elements.
+            </div>
+          </div>
 
-          <article class="project" aria-labelledby="gpt-heading">
-            <h3 id="gpt-heading" class="muted" style="margin:0 0 4px 0"><strong>Find My College GPT</strong> — July 2024</h3>
-            <div class="meta">Created a custom GPT to recommend colleges and programs based on user input using ChatGPT customization tools.</div>
-          </article>
+          <div class="entry">
+            <div class="title">(July 2024) - Find My College GPT</div>
+            <div class="meta">
+              Used ChatGPT’s customization tools to create a specialized GPT that takes user input and recommends colleges and programs that align with their goals.
+            </div>
+          </div>
         </div>
 
-        <div class="section" aria-labelledby="experience-heading">
-          <h2 id="experience-heading">Work Experience</h2>
-          <ul class="list">
-            <li><strong>Walmart — Stocking Associate (CAP 2)</strong> (Oct 2023 – Present)
-              <div class="subtle">Team-based unloading of freight and organizing stock; maintained store readiness.</div>
+        <div class="section" id="work">
+          <h2>Work Experience</h2>
+
+          <ul class="bulleted">
+            <li class="entry">
+              <div class="title">(October 2023 – Present) - Walmart Stocking Associate (CAP 2)</div>
+              <div class="meta">Collaborate with a team of stockers to unload freight and organize excess items.</div>
             </li>
-            <li style="margin-top:8px"><strong>Palmetto Community Action Partnership — Summer Youth Worker</strong> (July 2023)
-              <div class="subtle">Hands-on labor and organizational tasks.</div>
+
+            <li class="entry" style="margin-top:8px">
+              <div class="title">(July 2023) - Palmetto Community Action Partnership Summer Youth Worker</div>
+              <div class="meta">Hands-on Labor & Organization.</div>
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- Right column -->
-      <aside class="card" aria-labelledby="sidebar-heading">
-        <h2 id="sidebar-heading">Leadership & Volunteer</h2>
-
-        <div class="section">
-          <h3 class="muted" style="margin:0 0 6px 0"><strong>Leadership</strong></h3>
-          <ul class="list">
-            <li><strong>National Honor Society — Treasurer</strong> (Aug 2024 – May 2025): Managed membership payments; coordinated volunteer ideas.</li>
-            <li style="margin-top:6px"><strong>School Spirit Club — President</strong> (Aug 2024 – May 2025): Organized community events and activities.</li>
-            <li style="margin-top:6px"><strong>Class Vice President</strong> (Aug 2023 – May 2024): Participated in school-level decision making.</li>
-          </ul>
+      <!-- sidebar column -->
+      <aside>
+        <div class="section" id="leadership">
+          <h2>Leadership Experience</h2>
+          <div class="entry">
+            <div class="meta">
+              (August 2024 – May 2025) - National Honor Society Treasurer: Managed membership payments and assisted with ideas on volunteer events.<br><br>
+              (August 2024 – May 2025) - School Spirit Club President: Allowed me to bring in my school community, develop my creativity and social skills, and have fun simultaneously.<br><br>
+              (August 2023 – May 2024) - School Class Vice President: Allowed me to step up and help make big decisions for my class and the school in general.
+            </div>
+          </div>
         </div>
 
-        <div class="section">
-          <h3 class="muted" style="margin:0 0 6px 0"><strong>Volunteer</strong></h3>
-          <ul class="list">
-            <li><strong>The Bradley Blake Foundation Orange Walk</strong> — Jun 2022–2024 (≈21 hrs): Event set-up and management.</li>
-            <li style="margin-top:6px"><strong>Juneteenth</strong> — Jun 2024 (≈7 hrs): Ticket scanning and guest services.</li>
-            <li style="margin-top:6px"><strong>Trident Technical College</strong> — Jun 2024 (≈6 hrs): Packing books and materials.</li>
-            <li style="margin-top:6px"><strong>Diamond’s Construction</strong> — Jun 2023–2024 (≈30 hrs): Assisted builders and site cleanup.</li>
-          </ul>
+        <div class="section" id="volunteer">
+          <h2>Volunteer Experience</h2>
+          <div class="entry">
+            <div class="meta">
+              (June 2022-2024) - The Bradley Blake Foundation Orange Walk (Approximately 21 Hours): Helped set up tents, tables, and chairs, and managed events.<br><br>
+              (June 2024) - Juneteenth (Approximately 7 hours): Scanned tickets for participating guests coming into the event.<br><br>
+              (June 2024) - Trident Technical College (Approximately 6 Hours): Helped pack books and other materials before the renovation.<br><br>
+              (June 2023-2024) - Diamond’s Construction (Approximately 30 Hours): Helped with passing building materials to and from builders as well as cleaning the area.
+            </div>
+          </div>
         </div>
 
-        <div class="section">
-          <h3 class="muted" style="margin:0 0 6px 0"><strong>Extracurriculars</strong></h3>
-          <div class="subtle">
-            Upward Bound Math & Science (TRIO); National Society of Leadership and Success (NSLS); Association of African American Studies (AAAS); Brothers of Nubian Descent (BOND); Molinaroli College First-Gen Club; Colorstack; National Society of Black Engineers (NSBE); Multicultural Assistance Peer Program (MAPP).
+        <div class="section" id="activities">
+          <h2>Extracurricular Activities</h2>
+          <div class="meta">
+            (September 2022-2025) - Upward Bound Math & Science (TRIO) · (April 2025 – Present) - National Society of Leadership and Success (NSLS) · (August 2025 – Present) - The Association of African American Studies (AAAS) · (August 2025 – Present) - Brothers of Nubian Descent (BOND) · (August 2025 – Present) - Molinaroli College of Engineering & Computing First-Gen Club · (November 2025 – Present) - Colorstack · (August 2025 – Present) - National Society of Black Engineers (NSBE) · (August 2025 – Present) - Multicultural Assistance Peer Program (MAPP)
           </div>
         </div>
       </aside>
     </div>
 
     <footer>
-      <div class="subtle">This resume was generated from the uploaded resume files. Source: Kameron Timmons resume. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}</div>
+      Sources: Uploaded resume files. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
     </footer>
   </main>
 </body>
