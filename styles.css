@@ -1,41 +1,112 @@
 body {
-background: rgb(238, 239, 182);
-font-family: Arial, Helvetica, sans-serif;
-text-align: center;
+  background: rgb(238, 239, 182);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-color: navy;
-}
+/* keep your navy headings as-is */
+h1 { color: navy; }
 
+/* preserve current h2/h3 look (white text on navy background) */
 h2, h3 {
-    color: white;
-    background-color:navy
+  color: white;
+  background-color: navy;
+  margin: 0 0 12px 0;
+  padding: 8px 12px;
+  display: inline-block; /* prevents full-width band if desired */
+  border-radius: 6px;
 }
 
-.project img{
-width: 300px;
-height: 300px;
-margin: 10px;
-border: 2px solid rgb(navy); 
-display: block;
-margin: auto;
+/* CENTERED, MAX-WIDTH LAYOUT - prevents edge-to-edge content */
+.site-container {
+  max-width: 1100px;      /* adjust to taste */
+  margin: 32px auto;      /* centers and gives top/bottom space */
+  padding: 24px;
+  text-align: left;       /* better for paragraphs; headings remain centered if you want */
+  box-sizing: border-box;
 }
 
+/* Paragraph card style: white background, padding, subtle shadow */
+.site-container p {
+  background: #ffffff;
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  line-height: 1.6;
+  color: inherit;
+  word-wrap: break-word;
+}
+
+/* Link color — unchanged semantics, but keep it visible */
 a {
-text-decoration: none;
-color: red;
-}
-.project p {
-text-align: center;
-margin: 15px;
+  text-decoration: none;
+  color: red;
 }
 
-.projects { display:flex; flex-wrap:wrap; } /* condensed to save space */
+/* PROJECT GRID: responsive, keeps cards from stretching full width */
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+/* PROJECT CARD: tidy card layout, prevents overflow */
 .project {
-width: 30%;
-margin: 10px;
-padding: 20px 10px;
-background: white; /* pick a color */
-border-radius: 25%;
+  flex: 1 1 300px;        /* grows/shrinks, base width 300px */
+  max-width: 360px;
+  margin: 0;
+  padding: 18px;
+  background: transparent; /* paragraphs already have white backgrounds, keep card background subtle */
+  border-radius: 12px;
+  box-sizing: border-box;
+  overflow: hidden;       /* critical: prevents children from spilling out */
+  text-align: center;
+}
+
+/* Image box + responsive image behavior */
+.project .img-box {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;   /* 1:1 aspect ratio box; change to 56.25% for 16:9 */
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 auto 12px auto;
+  border: 2px solid navy; /* fixed the invalid rgb(navy) */
+  box-sizing: border-box;
+}
+
+.project .img-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* fills the box but keeps aspect ratio */
+  display: block;
+}
+
+/* small tweaks for the project paragraph that sat under images */
+.project p {
+  margin: 12px 0 0 0;
+  text-align: center;
+}
+
+/* Prevent long words/URLs from breaking layout */
+.site-container, .project, .project p, .project .img-box {
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .site-container { padding: 14px; }
+  .project { flex-basis: 100%; max-width: 100%; }
+  .project .img-box { padding-bottom: 66.66%; } /* slightly less tall on small screens */
+  h2, h3 { display: block; } /* allow full-width stacked headings on small screens */
 }
